@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class CropController : MonoBehaviour
 {
+    [SerializeField] private Animator playerAnimator;
+
     private Vector2Int moveDir = new Vector2Int();
     private Vector2Int currentGridPos = new Vector2Int();
     private bool isMoving = false;
@@ -50,10 +52,11 @@ public class CropController : MonoBehaviour
             isMoving = false;
             yield break;
         }
-
+        
         float waitTime = .5f;
         float elapsedTime = 0;
         Vector3 currentPos = transform.position;
+        playerAnimator.SetTrigger("Hop");
         while (elapsedTime < waitTime)
         {
             transform.position = Vector3.Lerp(currentPos, targetPosition, (elapsedTime / waitTime));

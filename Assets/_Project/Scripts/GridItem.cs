@@ -9,5 +9,6 @@ public enum BlockType
 {
     Normal,
     Stone,
-    Barren
+    Water,
+    Sun,
 }
