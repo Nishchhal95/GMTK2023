@@ -21,7 +21,7 @@ public class CropController : MonoBehaviour
         {
             for (int y = 0; y < GridManager.Instance.GridItems.GetLength(1); y++)
             {
-                if (GridManager.Instance.GridItems[i, y].GetBlockType() != BlockType.Stone)
+                if (GridManager.Instance.GridItems[i, y].BlockType != BlockType.Stone)
                 {
                     movableGridItems.Add(GridManager.Instance.GridItems[i, y]);
                 }
@@ -125,7 +125,7 @@ public class CropController : MonoBehaviour
             return false;
         }
 
-        if (GridManager.Instance.GetGridItem(destinationGridPos.x, destinationGridPos.y).GetBlockType() ==
+        if (GridManager.Instance.GetGridItem(destinationGridPos.x, destinationGridPos.y).BlockType ==
             BlockType.Stone)
         {
             return false;

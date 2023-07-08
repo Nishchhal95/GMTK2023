@@ -41,7 +41,7 @@ public class GridManager : MonoBehaviour
     private void SpawnGridElement(int column, int row)
     {
         GridItem gridItem = Instantiate(gridItemPrefab, startPoint.position + new Vector3(column * gridItemWidth, 0, row * gridItemHeight), Quaternion.identity, transform);
-        gridItem.SetBlockType((BlockType)Random.Range(0,3));
+        //gridItem.SetBlockType((BlockType)Random.Range(0,3));
         gridItem.transform.name = $"Grid Item {column},{row}";
         GridItems[column, row] = gridItem;
     }
