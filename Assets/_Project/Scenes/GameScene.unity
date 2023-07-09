@@ -540,6 +540,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: b0986be4efa04a349a495e53dad6cbc4, type: 3}
   m_PrefabInstance: {fileID: 116490489}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &287604779 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5402586847891943088, guid: f09b6403549b7224d823476b7e948b2d, type: 3}
+  m_PrefabInstance: {fileID: 1613954654}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e34b68118d2e0be429026f3b68bfd321, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &408708885 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 307249019866993468, guid: f09b6403549b7224d823476b7e948b2d, type: 3}
@@ -836,6 +847,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerAnimator: {fileID: 1949817316}
   energyManagement: {fileID: 678808888}
+  timer: {fileID: 287604779}
 --- !u!114 &678808888
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -855,6 +867,9 @@ MonoBehaviour:
   sunlightNumberPanel: {fileID: 408708885}
   energyNumberPanel: {fileID: 1113737358}
   conversionMenuUI: {fileID: 725157128}
+  gameOverPanel: {fileID: 1097957926}
+  timeAliveText: {fileID: 831890662}
+  timer: {fileID: 287604779}
 --- !u!114 &702195765 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 1775565207156555498, guid: f09b6403549b7224d823476b7e948b2d, type: 3}
@@ -980,6 +995,17 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 829225949849004235, guid: f09b6403549b7224d823476b7e948b2d, type: 3}
   m_PrefabInstance: {fileID: 1613954654}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &831890662 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2568135563907877059, guid: f09b6403549b7224d823476b7e948b2d, type: 3}
+  m_PrefabInstance: {fileID: 1613954654}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &877417529
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1242,6 +1268,11 @@ MonoBehaviour:
   m_BeforeTransparentBundles: []
   m_BeforeStackBundles: []
   m_AfterStackBundles: []
+--- !u!1 &1097957926 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6496850707200320122, guid: f09b6403549b7224d823476b7e948b2d, type: 3}
+  m_PrefabInstance: {fileID: 1613954654}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &1113737358 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 4806896955260178716, guid: f09b6403549b7224d823476b7e948b2d, type: 3}
@@ -1332,6 +1363,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1180725906454780714, guid: f09b6403549b7224d823476b7e948b2d, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 678808888}
     - target: {fileID: 1195593597425935688, guid: f09b6403549b7224d823476b7e948b2d, type: 3}
       propertyPath: m_Name
       value: Canvas
@@ -1420,13 +1455,17 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5402586847891943088, guid: f09b6403549b7224d823476b7e948b2d, type: 3}
+      propertyPath: _energyManagement
+      value: 
+      objectReference: {fileID: 678808888}
     - target: {fileID: 6461185835174310097, guid: f09b6403549b7224d823476b7e948b2d, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 678808888}
-    - target: {fileID: 6461185835174310097, guid: f09b6403549b7224d823476b7e948b2d, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: ConvertToEnergy
+    - target: {fileID: 6496850707200320122, guid: f09b6403549b7224d823476b7e948b2d, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

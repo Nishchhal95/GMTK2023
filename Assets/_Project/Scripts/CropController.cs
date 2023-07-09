@@ -6,14 +6,13 @@ public class CropController : MonoBehaviour
 {
     [SerializeField] private Animator playerAnimator;
     [SerializeField] private EnergyManagement energyManagement;
+    [SerializeField] private Timer timer;
 
     private Vector2Int moveDir = new Vector2Int();
     private Vector2Int currentGridPos = new Vector2Int();
     private bool isMoving = false;
     private int energyLevel = 5;
     
-
-
     private void Start()
     {
         MoveToSpawnPoint();
@@ -91,9 +90,17 @@ public class CropController : MonoBehaviour
 
     private void HandleTypeCollection(GridItem currentGridItem)
     {
-        energyLevel = energyManagement.CostEnergy(energyLevel);
-        
+        timer.AddTimeValue();
+        energyManagement.ConsumeEnergy();
 
+        if (currentGridItem.BlockType == BlockType.Sun)
+        {
+            energyManagement.AddSunlight();
+        }
+        else if (currentGridItem.BlockType == BlockType.Water)
+        {
+            energyManagement.AddWater();
+        }
     }
 
     private void Update()
@@ -148,6 +155,11 @@ public class CropController : MonoBehaviour
 
     private bool CheckCanMove()
     {
+        if(!energyManagement.HaveEnergyToMove() || !timer.GetCanMove())
+        {
+            return false;
+        } 
+        
         Vector2Int destinationGridPos = currentGridPos + moveDir;
         if (destinationGridPos.x < 0 || destinationGridPos.y < 0 ||
             destinationGridPos.x >= GridManager.Instance.GridItems.GetLength(0) ||
@@ -161,12 +173,6 @@ public class CropController : MonoBehaviour
         {
             return false;
         }
-
-        if(energyLevel <= 0)
-        {
-            Debug.Log(energyLevel);
-            return false;
-        }    
 
         return true;
     }
