@@ -5,10 +5,14 @@ using UnityEngine;
 public class CropController : MonoBehaviour
 {
     [SerializeField] private Animator playerAnimator;
+    [SerializeField] private EnergyManagement energyManagement;
 
     private Vector2Int moveDir = new Vector2Int();
     private Vector2Int currentGridPos = new Vector2Int();
     private bool isMoving = false;
+    private int energyLevel = 5;
+    
+
 
     private void Start()
     {
@@ -87,7 +91,9 @@ public class CropController : MonoBehaviour
 
     private void HandleTypeCollection(GridItem currentGridItem)
     {
+        energyLevel = energyManagement.CostEnergy(energyLevel);
         
+
     }
 
     private void Update()
@@ -155,6 +161,12 @@ public class CropController : MonoBehaviour
         {
             return false;
         }
+
+        if(energyLevel <= 0)
+        {
+            Debug.Log(energyLevel);
+            return false;
+        }    
 
         return true;
     }
