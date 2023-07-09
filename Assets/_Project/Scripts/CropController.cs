@@ -57,6 +57,7 @@ public class CropController : MonoBehaviour
         float elapsedTime = 0;
         Vector3 currentPos = transform.position;
         playerAnimator.SetTrigger("Hop");
+        AudioManager.Instance.PlayHopAudio();
         while (elapsedTime < waitTime)
         {
             transform.position = Vector3.Lerp(currentPos, targetPosition, (elapsedTime / waitTime));
@@ -66,6 +67,27 @@ public class CropController : MonoBehaviour
 
         transform.position = targetPosition;
         isMoving = false;
+        OnFinishedMove();
+    }
+
+    private void OnFinishedMove()
+    {
+        GridItem currentGridItem = GridManager.Instance.GetGridItem(currentGridPos.x, currentGridPos.y);
+        if(currentGridItem.BlockType == BlockType.Sun)
+        {
+            AudioManager.Instance.PlayCollectSunlightAudio();
+        }
+        else if(currentGridItem.BlockType == BlockType.Water)
+        {
+            AudioManager.Instance.PlayCollectWaterAudio();
+        }
+
+        HandleTypeCollection(currentGridItem);
+    }
+
+    private void HandleTypeCollection(GridItem currentGridItem)
+    {
+        
     }
 
     private void Update()
